@@ -1,0 +1,159 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ft_format_p.c copy.backup                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dhaouhao <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/01/02 05:03:23 by dhaouhao          #+#    #+#              #
+#    Updated: 2020/01/03 16:20:48 by dhaouhao         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#include "ft_printf.h"
+
+size_t	ft_write_p(t_parse *parsed, void *value)
+{
+	char	*str;
+
+	if (parsed->is_prec && parsed->is_width)
+		str = ft_apply_precision_n_width_p(parsed, value);
+	else if (parsed->is_prec && !parsed->is_width)
+		str = ft_apply_precision_p(parsed, value);
+	else
+		str = ft_apply_width_p(parsed, value);
+	return (ft_putstr(str));
+}
+
+char	*ft_apply_precision_n_width_p(t_parse *parsed, void *value)
+{
+	char	*tmp;
+	size_t	len;
+	size_t	size;
+	char	*str;
+
+	tmp = ft_apply_precision_p(parsed, value);
+	len = ft_strlen(tmp);
+	size = (parsed->width > len && parsed->width > 0) ? parsed->width : len;
+	if (!(str = malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	ft_memset(str, ' ', size);
+	if (parsed->is_left)
+		ft_memcpy(str, tmp, len);
+	else
+		ft_memcpy(str + (size - len), tmp, len);
+	str[size] = '\0';
+	free(tmp);
+	return (str);
+}
+
+char	*ft_apply_width_p(t_parse *parsed, void *value)
+{
+	char		*tmp;
+	size_t		size;
+	size_t		is_neg;
+	long long	val;
+
+	val = (value == NULL) ? 0 : (long long)value;
+	if (parsed->type == 'x')
+		tmp = ft_hex_to_str((unsigned long long)val);
+	else if (parsed->type == 'X')
+		tmp = ft_strupcase(ft_hex_to_str((unsigned long long)val));
+	else if (parsed->type == 'p')
+		tmp = ft_hex_to_str((unsigned long long)val);
+	else
+		tmp = ft_lltoa(val < 0 ? -val : val);
+	is_neg = (val < 0 && parsed->type != 'x' && parsed->type != 'X'
+	&& parsed->type != 'p') ? 1 : 0;
+	size = (parsed->type == 'p') ? ft_strlen(tmp) + 2 : ft_strlen(tmp);
+	size += (is_neg) ? 1 : 0;
+	size = (parsed->is_width && parsed->width > size) ? parsed->width : size;
+	return (ft_return_width_p(parsed, is_neg, size, tmp));
+}
+
+char	*ft_return_width_p(t_parse *parsed, size_t is_neg, size_t sz, char *tmp)
+{
+	char	*str;
+	size_t	ln;
+
+	ln = sz - ft_strlen(tmp);
+	if (!(str = malloc(sizeof(char) * (sz + 1))))
+		return (NULL);
+	if (parsed->is_0_filled)
+		ft_memset(str, '0', sz);
+	else
+		ft_memset(str, ' ', sz);
+	if (is_neg && (parsed->is_0_filled || parsed->is_left))
+		str[0] = '-';
+	else if (is_neg && !parsed->is_0_filled && !parsed->is_left)
+		str[ln - 1] = '-';
+	if (is_neg && parsed->is_left)
+		ft_memcpy(str + 1, tmp, ft_strlen(tmp));
+	else if (!is_neg && parsed->is_left)
+	{
+		if (parsed->type == 'p')
+		{
+			ft_memcpy(str, "0x", 2);
+			ft_memcpy(str + 2, tmp, ft_strlen(tmp));
+		}
+		else
+			ft_memcpy(str, tmp, ft_strlen(tmp));
+	}
+	else if (!parsed->is_left)
+	{
+		if (parsed->type == 'p')
+			ft_memcpy(str + (ln - 2), "0x", 2);
+		ft_memcpy(str + ln, tmp, ft_strlen(tmp));
+	}
+	str[sz] = '\0';
+	free(tmp);
+	return (str);
+}
+
+char	*ft_apply_precision_p(t_parse *parsed, void *value)
+{
+	char		*tmp;
+	size_t		size;
+	size_t		is_neg;
+	long long	val;
+
+	val = (value == NULL) ? 0 : (long long)value;
+	if (parsed->type == 'x')
+		tmp = ft_hex_to_str((unsigned long long)val);
+	else if (parsed->type == 'X')
+		tmp = ft_strupcase(ft_hex_to_str((unsigned long long)val));
+	else if (parsed->type == 'p')
+		tmp = ft_hex_to_str((unsigned long long)val);
+	else
+		tmp = ft_lltoa(val < 0 ? -val : val);
+	is_neg = (val < 0 && parsed->type != 'x' && parsed->type != 'X'
+	&& parsed->type != 'p') ? 1 : 0;
+	size = ft_strlen(tmp);
+	size = (parsed->prec > size) ? parsed->prec : size;
+	size += (parsed->type == 'p') ? 2 : 0;
+	size += (is_neg) ? 1 : 0;
+	size = (parsed->prec == 0 && val == 0) ? 0 : size;
+	return (ft_return_precision_p(parsed, is_neg, size, tmp));
+}
+
+char	*ft_return_precision_p(t_parse *parsed, size_t is_neg, size_t sz, char *tmp)
+{
+	char	*str;
+	size_t	ln;
+
+	if (!(str = malloc(sizeof(char) * (sz + 1))))
+		return (NULL);
+	if (sz != 0)
+	{
+		ln = sz - ft_strlen(tmp);
+		ft_memset(str, '0', sz);
+		if (is_neg)
+			str[0] = '-';
+		if (parsed->type == 'p')
+			ft_memcpy(str + (ln - 2), "0x", 2);
+		ft_memcpy(str + ln, tmp, ft_strlen(tmp));
+	}
+	str[sz] = '\0';
+	free(tmp);
+	return (str);
+}
