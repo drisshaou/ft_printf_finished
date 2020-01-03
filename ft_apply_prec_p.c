@@ -6,7 +6,7 @@
 /*   By: dhaouhao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 05:03:23 by dhaouhao          #+#    #+#             */
-/*   Updated: 2020/01/03 19:17:11 by dhaouhao         ###   ########.fr       */
+/*   Updated: 2020/01/03 19:47:10 by dhaouhao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ char	*ft_apply_prec_p(t_parse *parsed, void *addr)
 	intptr_t	val;
 
 	val = (addr == NULL) ? 0 : (intptr_t)addr;
-	tmp = ft_hex_to_str((unsigned long long)val);
+	if ((addr == (void*)-1))
+		tmp = ft_strdup("ffffffffffffffff");
+	else
+		tmp = ft_hex_to_str((unsigned long long)val);
 	size = ft_strlen(tmp);
 	size = (parsed->prec > size) ? parsed->prec + 2 : size + 2;
 	size = (parsed->prec == 0 && val == 0) ? 2 : size;
