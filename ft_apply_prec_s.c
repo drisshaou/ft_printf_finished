@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*   ft_apply_prec_s.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhaouhao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/24 01:22:16 by dhaouhao          #+#    #+#             */
-/*   Updated: 2020/01/02 02:18:27 by dhaouhao         ###   ########.fr       */
+/*   Created: 2020/01/03 11:58:42 by dhaouhao          #+#    #+#             */
+/*   Updated: 2020/01/03 19:17:26 by dhaouhao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_init_struct(t_parse *parsed)
+char	*ft_apply_prec_s(t_parse *parsed, char *tmp)
 {
-	parsed->is_left = 0;
-	parsed->is_0_filled = 0;
-	parsed->is_width = 0;
-	parsed->width = 0;
-	parsed->is_prec = 0;
-	parsed->prec = 0;
-	parsed->type = 0;
-	parsed->str = NULL;
+	char	*str;
+	char	*new_str;
+
+	new_str = (tmp == NULL) ? ft_strdup("(null)") : ft_strdup(tmp);
+	if (parsed->is_prec && parsed->prec < ft_strlen(new_str))
+		str = ft_substr(new_str, 0, parsed->prec);
+	else
+		str = ft_strdup(new_str);
+	free(new_str);
+	return (str);
 }

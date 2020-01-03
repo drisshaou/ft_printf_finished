@@ -6,18 +6,18 @@
 #    By: dhaouhao <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/24 02:13:23 by dhaouhao          #+#    #+#              #
-#    Updated: 2020/01/03 17:48:43 by dhaouhao         ###   ########.fr        #
+#    Updated: 2020/01/03 19:22:23 by dhaouhao         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	ft_apply_precision_diux.c ft_atoi.c ft_isprint.c ft_putstr.c \
-ft_apply_precision_n_width_diux.c ft_fill_struct.c ft_lltoa.c ft_set_prec.c \
-ft_write_c.c ft_apply_precision_n_width_p.c ft_get_formated.c ft_memcpy.c \
-ft_set_width.c ft_write_diux.c ft_apply_precision_p.c ft_hex_to_str.c \
-ft_memset.c ft_strdup.c ft_write_p.c ft_apply_precision_s.c ft_init_struct.c \
+SRCS		=	ft_apply_prec_diux.c ft_atoi.c ft_isprint.c ft_putstr.c \
+ft_apply_prec_n_width_diux.c ft_fill_struct.c ft_lltoa.c ft_set_prec.c \
+ft_write_c.c ft_apply_prec_n_width_p.c ft_get_formated.c ft_memcpy.c \
+ft_set_width.c ft_write_diux.c ft_apply_prec_p.c ft_hex_to_str.c \
+ft_memset.c ft_strdup.c ft_write_p.c ft_apply_prec_s.c ft_substr.c \
 ft_parse_str.c ft_strjoin.c ft_write_s.c ft_apply_width_diux.c ft_is_type.c \
 ft_printf.c ft_strlen.c ft_apply_width_p.c ft_isdigit.c ft_putchar.c \
-ft_strupcase.c ft_substr.c
+ft_strupcase.c
 
 
 HEADER		=	ft_printf.h

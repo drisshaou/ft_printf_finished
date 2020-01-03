@@ -17,9 +17,9 @@ size_t	ft_write_diux(t_parse *parsed, long long value)
 	char	*str;
 
 	if (parsed->is_prec && parsed->is_width)
-		str = ft_apply_precision_n_width_diux(parsed, value);
+		str = ft_apply_prec_n_width_diux(parsed, value);
 	else if (parsed->is_prec && !parsed->is_width)
-		str = ft_apply_precision_diux(parsed, value);
+		str = ft_apply_prec_diux(parsed, value);
 	else
 		str = ft_apply_width_diux(parsed, value);
 	free(str);

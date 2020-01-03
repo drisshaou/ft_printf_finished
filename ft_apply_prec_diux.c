@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_apply_precision_diux.c                          :+:      :+:    :+:   */
+/*   ft_apply_prec_diux.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhaouhao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 01:23:57 by dhaouhao          #+#    #+#             */
-/*   Updated: 2020/01/03 16:43:26 by dhaouhao         ###   ########.fr       */
+/*   Updated: 2020/01/03 19:16:02 by dhaouhao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_apply_precision_diux(t_parse *parsed, long long value)
+char	*ft_apply_prec_diux(t_parse *parsed, long long value)
 {
 	char	*tmp;
 	size_t	size;
@@ -29,10 +29,10 @@ char	*ft_apply_precision_diux(t_parse *parsed, long long value)
 	size = (parsed->prec > size) ? parsed->prec : size;
 	size += (is_neg) ? 1 : 0;
 	size = (parsed->prec == 0 && value == 0) ? 0 : size;
-	return (ft_return_precision_diux(is_neg, size, tmp));
+	return (ft_return_prec_diux(is_neg, size, tmp));
 }
 
-char	*ft_return_precision_diux(size_t is_neg, size_t sz, char *tmp)
+char	*ft_return_prec_diux(size_t is_neg, size_t sz, char *tmp)
 {
 	char	*str;
 	size_t	ln;

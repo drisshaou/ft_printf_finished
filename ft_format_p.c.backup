@@ -1,14 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_format_p.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: dhaouhao <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 05:03:23 by dhaouhao          #+#    #+#             */
-/*   Updated: 2020/01/03 16:33:12 by dhaouhao         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ft_format_p.c.backup                               :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dhaouhao <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/01/02 05:03:23 by dhaouhao          #+#    #+#              #
+#    Updated: 2020/01/03 19:15:26 by dhaouhao         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 #include "ft_printf.h"
 
@@ -17,22 +17,22 @@ size_t	ft_write_p(t_parse *parsed, void *addr)
 	char	*str;
 
 	if (parsed->is_prec && parsed->is_width)
-		str = ft_apply_precision_n_width_p(parsed, addr);
+		str = ft_apply_prec_n_width_p(parsed, addr);
 	else if (parsed->is_prec && !parsed->is_width)
-		str = ft_apply_precision_p(parsed, addr);
+		str = ft_apply_prec_p(parsed, addr);
 	else
 		str = ft_apply_width_p(parsed, addr);
 	return (ft_putstr(str));
 }
 
-char	*ft_apply_precision_n_width_p(t_parse *parsed, void *addr)
+char	*ft_apply_prec_n_width_p(t_parse *parsed, void *addr)
 {
 	char	*tmp;
 	size_t	len;
 	size_t	size;
 	char	*str;
 
-	tmp = ft_apply_precision_p(parsed, addr);
+	tmp = ft_apply_prec_p(parsed, addr);
 	len = ft_strlen(tmp);
 	size = (parsed->width > len && parsed->width > 0) ? parsed->width : len;
 	if (!(str = malloc(sizeof(char) * (size + 1))))
@@ -87,7 +87,7 @@ char	*ft_return_width_p(t_parse *parsed, size_t sz, char *tmp)
 	return (str);
 }
 
-char	*ft_apply_precision_p(t_parse *parsed, void *addr)
+char	*ft_apply_prec_p(t_parse *parsed, void *addr)
 {
 	char		*tmp;
 	size_t		size;
@@ -98,10 +98,10 @@ char	*ft_apply_precision_p(t_parse *parsed, void *addr)
 	size = ft_strlen(tmp);
 	size = (parsed->prec > size) ? parsed->prec + 2 : size + 2;
 	size = (parsed->prec == 0 && val == 0) ? 2 : size;
-	return (ft_return_precision_p(parsed, size, tmp));
+	return (ft_return_prec_p(parsed, size, tmp));
 }
 
-char	*ft_return_precision_p(t_parse *parsed, size_t sz, char *tmp)
+char	*ft_return_prec_p(t_parse *parsed, size_t sz, char *tmp)
 {
 	char	*str;
 	size_t	ln;

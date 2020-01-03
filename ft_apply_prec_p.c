@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_apply_precision_p.c                             :+:      :+:    :+:   */
+/*   ft_apply_prec_p.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhaouhao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 05:03:23 by dhaouhao          #+#    #+#             */
-/*   Updated: 2020/01/03 17:14:35 by dhaouhao         ###   ########.fr       */
+/*   Updated: 2020/01/03 19:17:11 by dhaouhao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_apply_precision_p(t_parse *parsed, void *addr)
+char	*ft_apply_prec_p(t_parse *parsed, void *addr)
 {
 	char		*tmp;
 	size_t		size;
@@ -23,10 +23,10 @@ char	*ft_apply_precision_p(t_parse *parsed, void *addr)
 	size = ft_strlen(tmp);
 	size = (parsed->prec > size) ? parsed->prec + 2 : size + 2;
 	size = (parsed->prec == 0 && val == 0) ? 2 : size;
-	return (ft_return_precision_p(size, tmp));
+	return (ft_return_prec_p(size, tmp));
 }
 
-char	*ft_return_precision_p(size_t sz, char *tmp)
+char	*ft_return_prec_p(size_t sz, char *tmp)
 {
 	char	*str;
 	size_t	ln;

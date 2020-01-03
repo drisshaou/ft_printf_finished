@@ -6,7 +6,7 @@
 /*   By: dhaouhao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 23:31:38 by dhaouhao          #+#    #+#             */
-/*   Updated: 2020/01/03 16:54:34 by dhaouhao         ###   ########.fr       */
+/*   Updated: 2020/01/03 19:21:05 by dhaouhao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct	s_parse
 	size_t		is_prec;
 	size_t		prec;
 	char		type;
-	char		*str;
 }				t_parse;
 int				ft_printf(const char *str, ...);
 size_t			ft_parse_str(const char *str, va_list args);
@@ -42,22 +41,22 @@ char			*ft_set_prec(char *str, t_parse *parsed, va_list args);
 char			*ft_set_width(char *str, t_parse *parsed, va_list args);
 size_t			ft_write_c(t_parse *parsed, char c);
 size_t			ft_write_s(t_parse *parsed, char *tmp);
-char			*ft_apply_precision_s(t_parse *parsed, char *tmp);
+char			*ft_apply_prec_s(t_parse *parsed, char *tmp);
 size_t			ft_write_diux(t_parse *parsed, long long value);
-char			*ft_apply_precision_diux(t_parse *parsed, long long value);
-char			*ft_return_precision_diux(size_t is_neg, size_t sz, char *tmp);
+char			*ft_apply_prec_diux(t_parse *parsed, long long value);
+char			*ft_return_prec_diux(size_t is_neg, size_t sz, char *tmp);
 char			*ft_apply_width_diux(t_parse *parsed, long long value);
 char			*ft_return_width_diux(t_parse *parsed, size_t is_neg,
 					size_t sz, char *tmp);
-char			*ft_apply_precision_n_width_diux(t_parse *parsed,
+char			*ft_apply_prec_n_width_diux(t_parse *parsed,
 					long long value);
 
 size_t			ft_write_p(t_parse *parsed, void *addr);
-char			*ft_apply_precision_p(t_parse *parsed, void *addr);
-char			*ft_return_precision_p(size_t sz, char *tmp);
+char			*ft_apply_prec_p(t_parse *parsed, void *addr);
+char			*ft_return_prec_p(size_t sz, char *tmp);
 char			*ft_apply_width_p(t_parse *parsed, void *addr);
 char			*ft_return_width_p(t_parse *parsed, size_t sz, char *tmp);
-char			*ft_apply_precision_n_width_p(t_parse *parsed, void *addr);
+char			*ft_apply_prec_n_width_p(t_parse *parsed, void *addr);
 
 
 

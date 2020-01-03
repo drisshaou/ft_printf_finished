@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_apply_precision_n_width_p.c                     :+:      :+:    :+:   */
+/*   ft_apply_prec_n_width_p.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhaouhao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 05:03:23 by dhaouhao          #+#    #+#             */
-/*   Updated: 2020/01/03 16:37:30 by dhaouhao         ###   ########.fr       */
+/*   Updated: 2020/01/03 19:16:55 by dhaouhao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_apply_precision_n_width_p(t_parse *parsed, void *addr)
+char	*ft_apply_prec_n_width_p(t_parse *parsed, void *addr)
 {
 	char	*tmp;
 	size_t	len;
 	size_t	size;
 	char	*str;
 
-	tmp = ft_apply_precision_p(parsed, addr);
+	tmp = ft_apply_prec_p(parsed, addr);
 	len = ft_strlen(tmp);
 	size = (parsed->width > len && parsed->width > 0) ? parsed->width : len;
 	if (!(str = malloc(sizeof(char) * (size + 1))))
