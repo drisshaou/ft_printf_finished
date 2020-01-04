@@ -19,9 +19,9 @@ char	*ft_apply_prec_diux(t_parse *parsed, long long value)
 	size_t	is_neg;
 
 	if (parsed->type == 'x')
-		tmp = ft_hex_to_str((unsigned long long)value);
+		tmp = ft_hex_to_str(value, "0123456789abcdef");
 	else if (parsed->type == 'X')
-		tmp = ft_strupcase(ft_hex_to_str((unsigned long long)value));
+		tmp = ft_hex_to_str(value, "0123456789ABCDEF");
 	else
 		tmp = ft_lltoa(value < 0 ? -value : value);
 	is_neg = (value < 0 && parsed->type != 'x' && parsed->type != 'X') ? 1 : 0;

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	ft_apply_prec_diux.c ft_atoi.c ft_strupcase.c ft_putstr.c \
+SRCS		=	ft_apply_prec_diux.c ft_atoi.c ft_putstr.c \
 ft_apply_prec_n_width_diux.c ft_fill_struct.c ft_lltoa.c ft_set_prec.c \
 ft_write_c.c ft_apply_prec_n_width_p.c ft_get_formated.c ft_memcpy.c \
 ft_set_width.c ft_write_diux.c ft_apply_prec_p.c ft_hex_to_str.c \

@@ -55,7 +55,7 @@ char			*ft_return_prec_p(size_t sz, char *tmp);
 char			*ft_apply_width_p(t_parse *parsed, void *addr);
 char			*ft_return_width_p(t_parse *parsed, size_t sz, char *tmp);
 char			*ft_apply_prec_n_width_p(t_parse *parsed, void *addr);
-char			*ft_hex_to_str(unsigned long long nbr);
+char			*ft_hex_to_str(unsigned long long nbr, char *base);
 char			*ft_lltoa(long long n);
 int				ft_atoi(const char *s);
 int				ft_isdigit(int c);

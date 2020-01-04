@@ -12,15 +12,13 @@
 
 #include "ft_printf.h"
 
-char	*ft_hex_to_str(unsigned long long nbr)
+char	*ft_hex_to_str(unsigned long long nbr, char *base)
 {
 	char	*hex;
-	char	*base;
 	int		nbr_final[20];
 	int		len;
 	int		i;
 
-	base = "0123456789abcdef";
 	len = (nbr == 0) ? 1 : 0;
 	nbr_final[0] = 0;
 	while (nbr)
