@@ -19,10 +19,7 @@ char	*ft_apply_width_p(t_parse *parsed, void *addr)
 	intptr_t	val;
 
 	val = (addr == NULL) ? 0 : (intptr_t)addr;
-	if ((addr == (void*)-1))
-		tmp = ft_strdup("ffffffffffffffff");
-	else
-		tmp = ft_hex_to_str((unsigned long long)val);
+	tmp = ft_hex_to_str((unsigned long long)val);
 	size = ft_strlen(tmp) + 2;
 	size = (parsed->is_width && parsed->width > size) ? parsed->width : size;
 	return (ft_return_width_p(parsed, size, tmp));

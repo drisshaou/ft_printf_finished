@@ -31,7 +31,7 @@ char	*ft_apply_width_diux(t_parse *parsed, long long value)
 	return (ft_return_width_diux(parsed, is_neg, size, tmp));
 }
 
-char	*ft_return_width_diux(t_parse *parsed, size_t is_neg, size_t sz, char *tmp)
+char	*ft_return_width_diux(t_parse *psd, size_t is_neg, size_t sz, char *tmp)
 {
 	char	*str;
 	size_t	ln;
@@ -39,19 +39,19 @@ char	*ft_return_width_diux(t_parse *parsed, size_t is_neg, size_t sz, char *tmp)
 	ln = sz - ft_strlen(tmp);
 	if (!(str = malloc(sizeof(char) * (sz + 1))))
 		return (NULL);
-	if (parsed->is_0_filled)
+	if (psd->is_0_filled)
 		ft_memset(str, '0', sz);
 	else
 		ft_memset(str, ' ', sz);
-	if (is_neg && (parsed->is_0_filled || parsed->is_left))
+	if (is_neg && (psd->is_0_filled || psd->is_left))
 		str[0] = '-';
-	else if (is_neg && !parsed->is_0_filled && !parsed->is_left)
+	else if (is_neg && !psd->is_0_filled && !psd->is_left)
 		str[ln - 1] = '-';
-	if (is_neg && parsed->is_left)
+	if (is_neg && psd->is_left)
 		ft_memcpy(str + 1, tmp, ft_strlen(tmp));
-	else if (!is_neg && parsed->is_left)
+	else if (!is_neg && psd->is_left)
 		ft_memcpy(str, tmp, ft_strlen(tmp));
-	else if (!parsed->is_left)
+	else if (!psd->is_left)
 		ft_memcpy(str + ln, tmp, ft_strlen(tmp));
 	str[sz] = '\0';
 	free(tmp);

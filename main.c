@@ -329,8 +329,8 @@ int main()
 	printf("\n\n----------POINTER INT----------\n");
 
 	printf("\n\n----------test47----------\n");
-	ft_printf("|%p|\n", s1);
-	printf("|%p|\n", s1);
+	ft_printf("|%.0p|\n", s1);
+	printf("|%.0p|\n", s1);
 
 	printf("\n\n----------test48----------\n");
 	ft_printf("|%30p|\n", s1);

@@ -46,20 +46,15 @@ size_t			ft_write_diux(t_parse *parsed, long long value);
 char			*ft_apply_prec_diux(t_parse *parsed, long long value);
 char			*ft_return_prec_diux(size_t is_neg, size_t sz, char *tmp);
 char			*ft_apply_width_diux(t_parse *parsed, long long value);
-char			*ft_return_width_diux(t_parse *parsed, size_t is_neg,
-					size_t sz, char *tmp);
-char			*ft_apply_prec_n_width_diux(t_parse *parsed,
-					long long value);
-
+char			*ft_return_width_diux(t_parse *psd, size_t is_neg, size_t sz,
+					char *tmp);
+char			*ft_apply_prec_n_width_diux(t_parse *parsed, long long value);
 size_t			ft_write_p(t_parse *parsed, void *addr);
 char			*ft_apply_prec_p(t_parse *parsed, void *addr);
 char			*ft_return_prec_p(size_t sz, char *tmp);
 char			*ft_apply_width_p(t_parse *parsed, void *addr);
 char			*ft_return_width_p(t_parse *parsed, size_t sz, char *tmp);
 char			*ft_apply_prec_n_width_p(t_parse *parsed, void *addr);
-
-
-
 char			*ft_hex_to_str(unsigned long long nbr);
 char			*ft_lltoa(long long n);
 int				ft_atoi(const char *s);
@@ -73,7 +68,5 @@ char			*ft_strjoin(char const *s1, char const *s2);
 size_t			ft_strlen(const char *str);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strupcase(char *str);
-int				ft_isprint(int c);
-
 
 #endif
