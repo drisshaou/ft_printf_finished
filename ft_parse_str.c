@@ -28,7 +28,7 @@ size_t	ft_parse_str(const char *str, va_list args)
 		if (i > 0)
 		{
 			if (*str == '%' && ft_is_type(str[i], TYPES) && i++)
-				ret += ft_get_formated(ft_substr(str, 1, i - 1), args);
+				ret += ft_put_parsed_str(ft_substr(str, 1, i - 1), args);
 			else
 			{
 				string = ft_substr(str, 0, i);

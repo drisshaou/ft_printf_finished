@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_formated.c                                  :+:      :+:    :+:   */
+/*   ft_put_parsed_str.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhaouhao <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-size_t	ft_get_formated(char *str, va_list args)
+size_t	ft_put_parsed_str(char *str, va_list args)
 {
 	t_parse	parsed;
 	size_t	ret;

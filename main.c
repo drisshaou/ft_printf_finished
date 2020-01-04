@@ -364,7 +364,7 @@ int main()
 	return (0);
 }
 
-//gcc -Wall -Werror -Wextra ft_write_c.c ft_init_struct.c ft_apply_width_diux.c ft_substr.c ft_write_diux.c ft_is_type.c ft_printf.c ft_parse_str.c ft_set_prec.c ft_return_prec_diux.c ft_write_s.c ft_isdigit.c ft_set_width.c ft_return_width_diux.c ft_lltoa.c ft_putchar.c ft_strdup.c ft_atoi.c ft_get_formated.c ft_memcpy.c ft_putstr.c ft_strjoin.c ft_fill_struct.c ft_memset.c ft_strlen.c ft_hex_to_str.c ft_apply_prec_n_width_diux.c ft_apply_prec_diux.c ft_strupcase.c main.c && ./a.out
+//gcc -Wall -Werror -Wextra ft_write_c.c ft_init_struct.c ft_apply_width_diux.c ft_substr.c ft_write_diux.c ft_is_type.c ft_printf.c ft_parse_str.c ft_set_prec.c ft_return_prec_diux.c ft_write_s.c ft_isdigit.c ft_set_width.c ft_return_width_diux.c ft_lltoa.c ft_putchar.c ft_strdup.c ft_atoi.c ft_put_parsed_str.c ft_memcpy.c ft_putstr.c ft_strjoin.c ft_fill_struct.c ft_memset.c ft_strlen.c ft_hex_to_str.c ft_apply_prec_n_width_diux.c ft_apply_prec_diux.c ft_strupcase.c main.c && ./a.out
 
 //cc -o ./a.out main.c libftprintf.a
 //gcc -Wall -Werror -Wextra libftprintf.a main.c && ./a.out

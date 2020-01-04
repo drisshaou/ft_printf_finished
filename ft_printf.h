@@ -34,7 +34,7 @@ typedef struct	s_parse
 int				ft_printf(const char *str, ...);
 size_t			ft_parse_str(const char *str, va_list args);
 int				ft_is_type(char c, const char *flags);
-size_t			ft_get_formated(char *str, va_list args);
+size_t			ft_put_parsed_str(char *str, va_list args);
 void			ft_init_struct(t_parse *parsed);
 void			ft_fill_struct(va_list args, t_parse *parsed, char *str);
 char			*ft_set_prec(char *str, t_parse *parsed, va_list args);
@@ -67,6 +67,5 @@ char			*ft_strdup(const char *s1);
 char			*ft_strjoin(char const *s1, char const *s2);
 size_t			ft_strlen(const char *str);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
-char			*ft_strupcase(char *str);
 
 #endif
